@@ -1,11 +1,15 @@
 #!/usr/bin/python3
+"""This module is the console"""
 
 import cmd
 import json
 from models import storage
+import models
 from models.base_model import BaseModel
 
+
 class HBNBCommand(cmd.Cmd):
+    """This is a subclass of the Cmd superclass"""
     prompt = '(hbnb) '
 
     def do_quit(self, arg):
@@ -114,6 +118,7 @@ class HBNBCommand(cmd.Cmd):
         obj = storage.all()[key]
         setattr(obj, attr_name, attr_value)
         storage.save()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
