@@ -23,7 +23,6 @@ class FileStorage:
         """This method creates new obj"""
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
         self.__objects[key] = obj
-        print("new is here")
 
         # Update class names
         self.__class_names.add(obj.__class__.__name__)
@@ -33,7 +32,6 @@ class FileStorage:
         with open(self.__file_path, 'w') as f:
             obj_dict = {key: obj.to_dict() for key, obj in self.__objects.items()}
             json.dump(obj_dict, f)
-            print("save is here")
 
         """ serialized_objs = {}
             for key, value in self.__objects.items():
@@ -43,7 +41,6 @@ class FileStorage:
 
     def reload(self):
         """Deserializes the JSON file to __objects"""
-        print("before reload")
         if os.path.exists(self.__file_path):  # Check if file exists
             if os.path.getsize(self.__file_path) > 0:
                 with open(self.__file_path, 'r') as f:
@@ -55,7 +52,6 @@ class FileStorage:
                 # Add more conditions for other classes if needed
         else:
             return
-        print("after reload")
         """
         if os.path.exists(type(self).__file_path) is True:
             return
