@@ -8,10 +8,10 @@ import json
 
 
 class BaseModel:
-    """This is the super basemodel class"""
-    """It contains the init constructor,
-        str, save, to_dict methods
-    """
+    """This is the super basemodel class.
+    It contains the init constructor, str, save, to_dict methods
+    it instantiates, serializes, deserializes and stores"""
+
     def __init__(self, *args, **kwargs):
         """The constructor, accepts both *args and **kwargs"""
         if kwargs:
