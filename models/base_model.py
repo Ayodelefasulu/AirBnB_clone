@@ -11,12 +11,13 @@ class BaseModel:
     it instantiates, serializes, deserializes and stores"""
 
     def __init__(self, *args, **kwargs):
-    """The constructor, accepts both *args and **kwargs"""
+        """The constructor, accepts both *args and **kwargs"""
+
         if kwargs:
             if '__class__' in kwargs:
                 del kwargs['__class__']  # Remove __class__ key if present
             for key, value in kwargs.items():
-                if key in ('created_at', 'updated_at'):  # Convert string to d_t
+                if key in ('created_at', 'updated_at'):  # string to d_t
                     value = datetime.datetime.fromisoformat(value)
                 setattr(self, key, value)
         else:
@@ -24,19 +25,19 @@ class BaseModel:
             self.created_at = datetime.datetime.now()
             self.updated_at = datetime.datetime.now()
 
-       # self.__dict__.update(kwargs)
-       # self.__dict__.update(kwargs)
-       # self.__dict__.pop('__class__', None)
+        # self.__dict__.update(kwargs)
+        # self.__dict__.update(kwargs)
+        # self.__dict__.pop('__class__', None)
 
-        #created_at_str = self.__dict__['created_at']
-        #updated_at_str = self.__dict__['updated_at']
-        #created_dt = datetime.datetime.fromisoformat(created_at_str)
-        #updated_dt = datetime.datetime.fromisoformat(updated_at_str)
-        #self.__dict__['created_at'] = created_dt
-        #self.__dict__['updated_at'] = updated_dt
+        # created_at_str = self.__dict__['created_at']
+        # updated_at_str = self.__dict__['updated_at']
+        # created_dt = datetime.datetime.fromisoformat(created_at_str)
+        # updated_dt = datetime.datetime.fromisoformat(updated_at_str)
+        # self.__dict__['created_at'] = created_dt
+        # self.__dict__['updated_at'] = updated_dt
 
-        """Here i will pop the __class__ key/value and then allow both created_at
-        & updated_at to be in the normal datetime format. then i will pass what's
+        """Here i will pop the __class__ key/value and allow both created_at
+        & updated_at be in the normal datetime format. then pass what's
         left of the dictionary as argument of the constructor"""
 
         """if kwargs:
