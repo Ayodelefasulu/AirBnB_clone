@@ -1,13 +1,17 @@
 #!/usr/bin/python3
+"""This is the super basemodel module"""
 
 import uuid
 import datetime
 
 
 class BaseModel:
+    """This is the super basemodel class.
+    It contains the init constructor, str, save, to_dict methods
+    it instantiates, serializes, deserializes and stores"""
 
     def __init__(self, *args, **kwargs):
-
+    """The constructor, accepts both *args and **kwargs"""
         if kwargs:
             if '__class__' in kwargs:
                 del kwargs['__class__']  # Remove __class__ key if present
@@ -40,16 +44,19 @@ class BaseModel:
                 setattr(self, key, value)"""
 
     def __str__(self):
+        """Return a string representation of the class"""
         return "[{}] ({}) {}"\
             .format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
+        """Saves the recent date"""
         self.updated_at = datetime.datetime.now()
 
     def to_dict(self):
-       # self.__dict__['__class__'] = self.__class__.__name__
-       # return self.__dict__
-       # print(self.__dict__)
+        """Converts to a dictionary representation"""
+        # self.__dict__['__class__'] = self.__class__.__name__
+        # return self.__dict__
+        # print(self.__dict__)
         obj_dict = self.__dict__.copy()
         obj_dict['__class__'] = self.__class__.__name__
         obj_dict['created_at'] = self.created_at.isoformat()
