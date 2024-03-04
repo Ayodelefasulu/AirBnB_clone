@@ -58,17 +58,6 @@ class BaseModel:
             self.created_at = datetime.datetime.now()
             self.updated_at = datetime.datetime.now()
 
-        # self.__dict__.update(kwargs)
-        # self.__dict__.update(kwargs)
-        # self.__dict__.pop('__class__', None)
-
-        # created_at_str = self.__dict__['created_at']
-        # updated_at_str = self.__dict__['updated_at']
-        # created_dt = datetime.datetime.fromisoformat(created_at_str)
-        # updated_dt = datetime.datetime.fromisoformat(updated_at_str)
-        # self.__dict__['created_at'] = created_dt
-        # self.__dict__['updated_at'] = updated_dt
-
         # Here i will pop the __class__ key/value and allow both created_at
         # & updated_at be in the normal datetime format. then pass what's
         # left of the dictionary as argument of the constructor
@@ -101,9 +90,6 @@ class BaseModel:
 
         """
 
-        # self.__dict__['__class__'] = self.__class__.__name__
-        # return self.__dict__
-        # print(self.__dict__)
         obj_dict = self.__dict__.copy()
         obj_dict['__class__'] = self.__class__.__name__
         obj_dict['created_at'] = self.created_at.isoformat()
