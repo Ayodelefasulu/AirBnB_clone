@@ -15,6 +15,7 @@ import datetime
 import json
 # from models import storage
 
+
 class BaseModel:
     """The BaseModel class represents the base model for other classes.
 
