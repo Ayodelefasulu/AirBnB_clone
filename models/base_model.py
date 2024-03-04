@@ -15,9 +15,11 @@ class BaseModel:
 
         if kwargs:
             if '__class__' in kwargs:
-                del kwargs['__class__']  # Remove __class__ key if present
+                # Remove __class__ key if present
+                del kwargs['__class__']
             for key, value in kwargs.items():
-                if key in ('created_at', 'updated_at'):  # string to d_t
+                # Converts string to datetime
+                if key in ('created_at', 'updated_at'):
                     value = datetime.datetime.fromisoformat(value)
                 setattr(self, key, value)
         else:
@@ -36,13 +38,9 @@ class BaseModel:
         # self.__dict__['created_at'] = created_dt
         # self.__dict__['updated_at'] = updated_dt
 
-        """Here i will pop the __class__ key/value and allow both created_at
-        & updated_at be in the normal datetime format. then pass what's
-        left of the dictionary as argument of the constructor"""
-
-        """if kwargs:
-            for key, value in kwargs.items():
-                setattr(self, key, value)"""
+        # Here i will pop the __class__ key/value and allow both created_at
+        # & updated_at be in the normal datetime format. then pass what's
+        # left of the dictionary as argument of the constructor
 
     def __str__(self):
         """Return a string representation of the class"""
