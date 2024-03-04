@@ -2,7 +2,7 @@
 """This is the super basemodel module"""
 
 import uuid
-import datetime
+from datetime import datetime
 
 
 class BaseModel:
