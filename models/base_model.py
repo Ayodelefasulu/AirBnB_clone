@@ -1,5 +1,14 @@
 #!/usr/bin/python3
-"""This is the super basemodel module"""
+"""This is the super basemodel module
+
+This is the super basemodel module. It contains the BaseModel class,
+which provides functionality for instantiating, serializing,
+deserializing, and storing objects.
+
+Classes:
+    BaseModel: The base model class.
+
+"""
 
 import uuid
 import datetime
@@ -7,12 +16,32 @@ import json
 # from models import storage
 
 class BaseModel:
-    """This is the super basemodel class.
-    It contains the init constructor, str, save, to_dict methods
-    it instantiates, serializes, deserializes and stores"""
+    """The BaseModel class represents the base model for other classes.
 
+    This class provides the core functionality for instantiating objects,
+    managing creation and update times, and converting objects to dictionary
+    representations.
+
+    Methods:
+        __init__: Initializes a new BaseModel instance.
+        __str__: Returns a string representation of the BaseModel instance.
+        save: Saves the BaseModel instance.
+        to_dict: Converts the BaseModel instance to a dictionary.
+
+    Attributes:
+        id (str): The unique identifier for the instance.
+        created_at (datetime): The timestamp of instance creation.
+        updated_at (datetime): The timestamp of instance update.
+
+    """
     def __init__(self, *args, **kwargs):
-        """The constructor, accepts both *args and **kwargs"""
+        """Initializes a new BaseModel instance.
+
+        Args:
+            *args: Variable length argument list.
+            **kwargs: Arbitrary keyword arguments.
+
+        """
 
         if kwargs:
             if '__class__' in kwargs:
@@ -44,16 +73,33 @@ class BaseModel:
         # left of the dictionary as argument of the constructor
 
     def __str__(self):
-        """Return a string representation of the class"""
+        """Returns a string representation of the BaseModel instance.
+
+        Returns:
+            str: The string representation of the BaseModel instance.
+
+        """
+
         return "[{}] ({}) {}"\
             .format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
-        """Saves the recent date"""
+        """Saves the recent date.
+
+        Updates the updated_at attribute to the current date and time.
+
+        """
+
         self.updated_at = datetime.datetime.now()
 
     def to_dict(self):
-        """Converts to a dictionary representation"""
+        """Converts the BaseModel instance to a dictionary.
+
+        Returns:
+            dict: A dictionary representation of the BaseModel instance.
+
+        """
+
         # self.__dict__['__class__'] = self.__class__.__name__
         # return self.__dict__
         # print(self.__dict__)
