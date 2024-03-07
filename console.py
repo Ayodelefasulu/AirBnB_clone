@@ -4,8 +4,8 @@ import cmd
 import os
 import json
 from models import storage
-import models
 from models.base_model import BaseModel
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
