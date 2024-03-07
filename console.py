@@ -18,6 +18,7 @@ from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
+    """This is a subclass of the Cmd superclass"""
     prompt = '(hbnb) '
 
     def do_quit(self, arg):
@@ -91,7 +92,6 @@ class HBNBCommand(cmd.Cmd):
         except NameError:
             print("** class doesn't exist **")
             return
-
         if len(args) < 2:
             print("** instance id missing **")
             return
