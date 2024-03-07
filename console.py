@@ -1,5 +1,14 @@
 #!/usr/bin/python3
+""" This is the console engine
 
+    Class: HBNBCommand
+
+    Methods: create: creates a new instance of classname
+             show: prints the string representation of instance
+             all: prints string representation of all instance
+             destroy: deletes an instance based on classname
+             update: updates an instance attribute
+"""
 import cmd
 import os
 import json
@@ -25,6 +34,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, arg):
+        """creates a new instance of classname"""
         if not arg:
             print("** class name missing **")
             return
@@ -37,6 +47,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_show(self, arg):
+        """prints the string representation of instance"""
         args = arg.split()
         if len(args) < 1:
             print("** class name missing **")
@@ -64,6 +75,7 @@ class HBNBCommand(cmd.Cmd):
         print(storage.all()[key])
 
     def do_destroy(self, arg):
+        """deletes an instance based on classname"""
         args = arg.split()
         if len(args) < 1:
             print("** class name missing **")
@@ -128,6 +140,7 @@ class HBNBCommand(cmd.Cmd):
         print([str(obj) for obj in objs])"""
 
     def do_update(self, arg):
+        """updates an instance attribute"""
         args = arg.split()
         # cls = eval(args[0])
         keys = storage.all().keys()
