@@ -7,7 +7,6 @@ deserializing, and storing objects.
 
 Classes:
     BaseModel: The base model class.
-
 """
 
 import uuid
@@ -33,7 +32,6 @@ class BaseModel:
         id (str): The unique identifier for the instance.
         created_at (datetime): The timestamp of instance creation.
         updated_at (datetime): The timestamp of instance update.
-
     """
     def __init__(self, *args, **kwargs):
         """Initializes a new BaseModel instance.
@@ -41,7 +39,6 @@ class BaseModel:
         Args:
             *args: Variable length argument list.
             **kwargs: Arbitrary keyword arguments.
-
         """
 
         if kwargs:
@@ -68,7 +65,6 @@ class BaseModel:
 
         Returns:
             str: The string representation of the BaseModel instance.
-
         """
 
         return "[{}] ({}) {}"\
@@ -78,7 +74,6 @@ class BaseModel:
         """Saves the recent date.
 
         Updates the updated_at attribute to the current date and time.
-
         """
         self.updated_at = datetime.datetime.now()
         storage.save()
@@ -89,7 +84,6 @@ class BaseModel:
 
         Returns:
             dict: A dictionary representation of the BaseModel instance.
-
         """
 
         obj_dict = self.__dict__.copy()
