@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """FileStorage Module
 
-This module provides a FileStorage class for serializing and deserializing objects
+This module provides FileStorage class for serializing & deserializing objects
 to and from a JSON file.
 
 Classes:
@@ -10,6 +10,7 @@ Classes:
 """
 import json
 import os
+
 
 class FileStorage():
     """A class for managing storage of objects in a JSON file.
@@ -47,14 +48,16 @@ class FileStorage():
         """Save the current state of the dictionary to the JSON file."""
         filepath = os.path.join(os.getcwd(), self.__file_path)
         with open(filepath, 'w') as f:
-           # obj_dict = {}
-           # for key, value in self.__objects.items():
-               # if isinstance(value, BaseModel):
-                   # obj_dict[key] = value.to_dict()
-               # else:
-                   # obj_dict[key] = value
-            obj_dict = {key: obj.to_dict() for key, obj in self.__objects.items()}
-            json.dump(obj_dict, f)
+            """obj_dict = {}
+            for key, value in self.__objects.items():
+                if isinstance(value, BaseModel):
+                    obj_dict[key] = value.to_dict()
+                else:
+                    obj_dict[key] = value"""
+            obj_dict =\
+                {key: obj.to_dict() for key, obj in self.__objects.items()}
+            json.dump(obj_dict, f, indent=4, separators=(',', ':'))
+            f.write('\n')
 
     def reload(self):
         """Load data from the JSON file into the dictionary."""
@@ -66,12 +69,14 @@ class FileStorage():
                     if data:
                         loaded_data = json.loads(data)
                         from models.base_model import BaseModel
-                        self.__objects = {key: BaseModel(**value) for key, value in loaded_data.items()}
-                   # data = json.load(f)
-                   # self.__objects = {}
-                   # for key, value in data.items():
-                   #     class_name, obj_id = key.split('.')
-                   #     self.__objects[key] = globals()[class_name](**value)
+                        for key, value in loaded_data.items():
+                            self.__objects[key] = BaseModel(**value)
+
+                    # data = json.load(f)
+                    # self.__objects = {}
+                    # for key, value in data.items():
+                    #     class_name, obj_id = key.split('.')
+                    #     self.__objects[key] = globals()[class_name](**value)
             except FileNotFoundError as e:
                 print(f"Error: File '{filepath}' not found.")
             except json.JSONDecodeError as e:
