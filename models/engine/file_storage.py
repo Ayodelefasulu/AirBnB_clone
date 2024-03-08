@@ -10,7 +10,6 @@ Classes:
 """
 import json
 import os
-#from models.user import User
 
 
 class FileStorage():
@@ -57,7 +56,8 @@ class FileStorage():
                     obj_dict[key] = value"""
             obj_dict =\
                 {key: obj.to_dict() for key, obj in self.__objects.items()}
-            json.dump(obj_dict, f, indent=4, separators=(',', ':'))
+            # json.dump(obj_dict, f, indent=4, separators=(',', ':'))
+            json.dump(obj_dict, f)
             f.write('\n')
 
     def reload(self):

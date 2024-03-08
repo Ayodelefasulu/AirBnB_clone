@@ -54,8 +54,6 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         class_name = args[0]
-        print("Class name:", class_name)  # Debugging statement
-        print("Available classes:", storage.__class__)  # Debugging statement
 
         # if class_name not in BaseModel.__class__.__name__:
         # if not cls:
@@ -82,8 +80,6 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         class_name = args[0]
-        print("Class name:", class_name)  # Debugging statement
-        print("Available classes:", storage.__class__)  # Debugging statement
 
         # if class_name not in BaseModel.__class__.__name__:
         # if not cls:
@@ -92,6 +88,7 @@ class HBNBCommand(cmd.Cmd):
         except NameError:
             print("** class doesn't exist **")
             return
+
         if len(args) < 2:
             print("** instance id missing **")
             return
@@ -143,7 +140,7 @@ class HBNBCommand(cmd.Cmd):
         """updates an instance attribute"""
         args = arg.split()
         # cls = eval(args[0])
-        keys = storage.all().keys()
+        # keys = storage.all().keys()
         if not args[0]:
             print("** class name missing **")
             return
