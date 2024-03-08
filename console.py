@@ -10,8 +10,6 @@
              update: updates an instance attribute
 """
 import cmd
-import os
-import json
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
