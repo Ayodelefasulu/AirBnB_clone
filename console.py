@@ -167,7 +167,7 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
             return
         instance = storage.all()[key_to_find]
-        print("+++++++++++++updated+++++++++++++")
+        # print("+++++++++++++updated+++++++++++++")
         attr_name = args[2]
         attr_value = args[3]
         # instance.args[2] = args[3]
