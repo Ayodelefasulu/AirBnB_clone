@@ -15,7 +15,11 @@ import json
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
-
+from models.place import Place
+from models.city import City
+from models.state import State
+from models.amenity import Amenity
+from models.review import Review
 
 class HBNBCommand(cmd.Cmd):
     """This is a subclass of the Cmd superclass"""
@@ -113,7 +117,10 @@ class HBNBCommand(cmd.Cmd):
             instances = storage.all().values()  # Get all instances of cls
 
         # Print string representations of the instances
-        print([str(instance) for instance in instances])
+        # for instance in instances:
+            # if isinstance(instance, class_name):
+        print([str(instance) for instance in instances if isinstance(instance, class_name)])
+        # print([str(instance)])
 
     """def do_all(self, arg):
         if arg and arg not in storage.all():
