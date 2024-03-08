@@ -54,8 +54,6 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         class_name = args[0]
-        print("Class name:", class_name)  # Debugging statement
-        print("Available classes:", storage.__class__)  # Debugging statement
 
         # if class_name not in BaseModel.__class__.__name__:
         # if not cls:
@@ -82,8 +80,6 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         class_name = args[0]
-        print("Class name:", class_name)  # Debugging statement
-        print("Available classes:", storage.__class__)  # Debugging statement
 
         # if class_name not in BaseModel.__class__.__name__:
         # if not cls:
