@@ -85,4 +85,5 @@ class FileStorage():
             except Exception as e:
                 print(f"An unexpected error occurred: {e}")
         else:
-            print("JSON file does not exist")
+            # print("JSON file does not exist")
+            return
