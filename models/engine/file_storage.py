@@ -71,6 +71,10 @@ class FileStorage():
                         loaded_data = json.loads(data)
                         from models.base_model import BaseModel
                         for key, value in loaded_data.items():
+                            # class_name, obj_id = key.split('.')
+                            # ===========================================================
+                            # cls = globals()[class_name]
+                            # self.__objects[key] = self.__class__(**value)
                             self.__objects[key] = BaseModel(**value)
 
                     # data = json.load(f)
@@ -82,7 +86,8 @@ class FileStorage():
                 print(f"Error: File '{filepath}' not found.")
             except json.JSONDecodeError as e:
                 print(f"Error decoding JSON data: {e}")
-            except Exception as e:
-                print(f"An unexpected error occurred: {e}")
+            # except Exception as e:
+                # print(f"An unexpected error occurred: {e}")
         else:
-            print("JSON file does not exist")
+            # print("JSON file does not exist")
+            return
